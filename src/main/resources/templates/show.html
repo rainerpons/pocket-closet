@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Show Clothing</title>
+</head>
+<body>
+	<h1>Show Clothing</h1>
+	<div layout:fragment="content">
+		<label>Type</label>
+		<p th:text="${clothing.type}" th:href="@{'/show/' + ${clothing.id}}"></p>
+		<label>Color</label>
+		<p th:text="${clothing.color}"></p>
+		<label>Brand</label>
+		<p th:text="${clothing.brand}"></p>
+		<label>Info</label>
+		<p th:text="${clothing.info}"></p>
+
+		<form action="/delete">
+			<input type="hidden" name="id" th:value="${clothing.id}" />
+			<h2>
+				<input type="submit" value="Delete" onclick="return confirm('Are you sure?');" /> <a
+					th:href="@{'/edit/' + ${clothing.id}}">Edit</a>
+			</h2>
+		</form>
+	</div>
+</body>
+</html>

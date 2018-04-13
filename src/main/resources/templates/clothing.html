@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>View Clothing</title>
+</head>
+<body>
+	<div class="row" layout:fragment="content">
+		<h1>Clothing List</h1>
+		<table id="clothing-table">
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Color</th>
+					<th>Brand</th>
+					<th>Info</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="clothing : ${clothingList}">
+					<td><a th:text="${clothing.type}" th:href="@{'/show/' + ${clothing.id}}"></a></td>
+					<td th:text="${clothing.color}"></td>
+					<td th:text="${clothing.brand}"></td>
+					<td th:text="${clothing.info}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Edit Clothing</title>
+</head>
+<body>
+	<div layout:fragment="content" class="row">
+		<h1>Edit Clothing</h1>
+		<form action="/update">
+			<div>
+				<label for="type">Type</label>
+				<input type="text" name="type" th:value="${clothing.type}" />
+			</div>
+			<div>
+				<label for="color">Color</label>
+				<input type="text" name="color" th:value="${clothing.color}" />
+			</div>
+			<div>
+				<label for="brand">Brand</label>
+				<input type="text" name="brand" th:value="${clothing.brand}" />
+			</div>
+			<div>
+				<label for="info">Info</label>
+				<input type="text" name="info" th:value="${clothing.info}" />
+			</div>
+			<input type="hidden" name="id" th:value="${clothing.id}" />
+			<button type="submit">Save</button>
+		</form>
+	</div>
+</body>
+</html>
