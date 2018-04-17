@@ -1,30 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">
+
 <head>
-<title>View Clothing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing | PocketCloset</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-	<div class="row" layout:fragment="content">
-		<h1>Clothing List</h1>
-		<table id="clothing-table">
-			<thead>
-				<tr>
-					<th>Type</th>
-					<th>Color</th>
-					<th>Brand</th>
-					<th>Info</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="clothing : ${clothingList}">
-					<td><a th:text="${clothing.type}" th:href="@{'/show/' + ${clothing.id}}"></a></td>
-					<td th:text="${clothing.color}"></td>
-					<td th:text="${clothing.brand}"></td>
-					<td th:text="${clothing.info}"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="/" id="pocket-closet-logo">Pocket Closet</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/" id="navbar-home-button">HOME</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/create" id="navbar-create-button">CREATE</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/clothing" id="navbar-view-button">VIEW</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+
+    <main class="page faq-page">
+        <section class="clean-block clean-faq dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">View Clothing</h2>
+                </div>
+                <div class="block-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Color</th>
+                                    <th>Brand</th>
+                                    <th>Info</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="clothing : ${clothingList}">
+                                    <td><a th:text="${clothing.type}" th:href="@{'/show?id=' + ${clothing.id}}"></a></td>
+                                    <td th:text="${clothing.color}"></td>
+                                    <td th:text="${clothing.brand}"></td>
+                                    <td th:text="${clothing.info}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/" id="footer-home-button">Home</a></li>
+                <li class="list-inline-item"><a href="/create" id="footer-create-button">Create</a></li>
+                <li class="list-inline-item"><a href="/clothing" id="footer-view-button">View</a></li>
+                <li class="list-inline-item"><a href="https://github.com/rainerpons/pocket-closet" target="_blank" id="footer-source-button">Source</a></li>
+            </ul>
+            <p class="copyright">Pocket Closet © 2018</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>

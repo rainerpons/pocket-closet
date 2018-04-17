@@ -1,28 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-<title>Show Clothing</title>
-</head>
-<body>
-	<h1>Show Clothing</h1>
-	<div layout:fragment="content">
-		<label>Type</label>
-		<p th:text="${clothing.type}" th:href="@{'/show/' + ${clothing.id}}"></p>
-		<label>Color</label>
-		<p th:text="${clothing.color}"></p>
-		<label>Brand</label>
-		<p th:text="${clothing.brand}"></p>
-		<label>Info</label>
-		<p th:text="${clothing.info}"></p>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">
 
-		<form action="/delete">
-			<input type="hidden" name="id" th:value="${clothing.id}" />
-			<h2>
-				<input type="submit" value="Delete" onclick="return confirm('Are you sure?');" /> <a
-					th:href="@{'/edit/' + ${clothing.id}}">Edit</a>
-			</h2>
-		</form>
-	</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show | PocketCloset</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="/" id="pocket-closet-logo">Pocket Closet</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/" id="navbar-home-button">HOME</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/create" id="navbar-create-button">CREATE</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/clothing" id="navbar-view-button">VIEW</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Show An Entry</h2>
+                </div>
+                <form action="/delete">
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group"><label>Type</label>
+                                <p th:text="${clothing.type}" th:href="@{'/show/' + ${clothing.id}}"></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group"><label>Color</label>
+                                <p th:text="${clothing.color}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group"><label>Brand</label>
+                                <p th:text="${clothing.brand}"></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group"><label>Info</label>
+                                <p th:text="${clothing.info}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col"><a class="btn btn-secondary btn-block" th:href="@{'/edit?id=' + ${clothing.id}}" style="color:rgb(255,255,255);">Edit</a></div>
+                        <div class="col"><input class="form-control" type="hidden" name="id" th:value="${clothing.id}"><input class="form-control btn btn-danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/" id="footer-home-button">Home</a></li>
+                <li class="list-inline-item"><a href="/create" id="footer-create-button">Create</a></li>
+                <li class="list-inline-item"><a href="/clothing" id="footer-view-button">View</a></li>
+                <li class="list-inline-item"><a href="https://github.com/rainerpons/pocket-closet" target="_blank" id="footer-source-button">Source</a></li>
+            </ul>
+            <p class="copyright">Pocket Closet © 2018</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
