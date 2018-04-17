@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,7 +30,7 @@ public class ClothingController {
 		clothing.setBrand(brand);
 		clothing.setInfo(info);
 		clothingRepository.save(clothing);
-		return "redirect:/show/" + clothing.getId();
+		return "redirect:/show?id=" + clothing.getId();
 	}
 
 	@RequestMapping("/clothing")
@@ -40,8 +39,8 @@ public class ClothingController {
 		return "clothing";
 	}
 
-	@RequestMapping("/show/{id}")
-	public String show(@PathVariable String id, Model model) {
+	@RequestMapping("/show")
+	public String show(@RequestParam String id, Model model) {
 		Optional<Clothing> optional = clothingRepository.findById(id);
 		if (optional.isPresent()) {
 			Clothing clothing = optional.get();
@@ -50,8 +49,8 @@ public class ClothingController {
 		return "show";
 	}
 
-	@RequestMapping("/edit/{id}")
-	public String edit(@PathVariable String id, Model model) {
+	@RequestMapping("/edit")
+	public String edit(@RequestParam String id, Model model) {
 		Optional<Clothing> optional = clothingRepository.findById(id);
 		if (optional.isPresent()) {
 			Clothing clothing = optional.get();
@@ -71,7 +70,6 @@ public class ClothingController {
 			clothing.setBrand(brand);
 			clothing.setInfo(info);
 			clothingRepository.save(clothing);
-			return "redirect:/show/" + clothing.getId();
 		}
 		return "redirect:/clothing";
 	}
