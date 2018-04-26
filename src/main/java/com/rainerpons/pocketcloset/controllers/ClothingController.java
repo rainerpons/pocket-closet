@@ -1,4 +1,4 @@
-package com.rainerpons.pocketcloset.controller;
+package com.rainerpons.pocketcloset.controllers;
 
 import java.util.Optional;
 
@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.rainerpons.pocketcloset.model.Clothing;
-import com.rainerpons.pocketcloset.repository.ClothingRepository;
+import com.rainerpons.pocketcloset.models.Clothing;
+import com.rainerpons.pocketcloset.repositories.ClothingRepository;
 
 @Controller
 public class ClothingController {

@@ -1,6 +1,6 @@
-package com.rainerpons.pocketcloset.repository;
+package com.rainerpons.pocketcloset.repositories;
 
-import com.rainerpons.pocketcloset.model.Clothing;
+import com.rainerpons.pocketcloset.models.Clothing;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

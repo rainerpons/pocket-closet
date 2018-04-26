@@ -1,4 +1,4 @@
-package com.rainerpons.pocketcloset.model;
+package com.rainerpons.pocketcloset.models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
