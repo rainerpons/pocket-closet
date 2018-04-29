@@ -1,86 +1,62 @@
 package com.rainerpons.pocketcloset.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.rainerpons.pocketcloset.exceptions.ClothingNotFoundException;
 import com.rainerpons.pocketcloset.models.Clothing;
 import com.rainerpons.pocketcloset.repositories.ClothingRepository;
 
-@Controller
+@RestController
+@RequestMapping("/api/clothing")
 public class ClothingController {
 	@Autowired
 	ClothingRepository clothingRepository;
-
-	@RequestMapping("/create")
-	public String create(Model model) {
-		return "create";
+	
+	@PostMapping
+	public Clothing create(@RequestBody Clothing clothing) {
+		return clothingRepository.save(clothing);
 	}
-
-	@RequestMapping("/save")
-	public String save(@RequestParam String type, @RequestParam String color,
-			@RequestParam String brand, @RequestParam String info) {
-		Clothing clothing = new Clothing();
-		clothing.setType(type);
-		clothing.setColor(color);
-		clothing.setBrand(brand);
-		clothing.setInfo(info);
-		clothingRepository.save(clothing);
-		return "redirect:/show?id=" + clothing.getId();
-	}
-
-	@RequestMapping("/clothing")
-	public String clothing(Model model) {
-		model.addAttribute("clothingList", clothingRepository.findAll());
-		return "clothing";
-	}
-
-	@RequestMapping("/show")
-	public String show(@RequestParam String id, Model model) {
-		Optional<Clothing> optional = clothingRepository.findById(id);
-		if (optional.isPresent()) {
-			Clothing clothing = optional.get();
-			model.addAttribute("clothing", clothing);
+	
+	@GetMapping("/{id}")
+	public Clothing read(@PathVariable String id) throws ClothingNotFoundException {
+		Optional<Clothing> clothing = clothingRepository.findById(id);
+		if (!clothing.isPresent()) {
+			String message = String.format("No clothing with id %s", id);
+			throw new ClothingNotFoundException(message);
 		}
-		return "show";
+		return clothing.get();
 	}
 
-	@RequestMapping("/edit")
-	public String edit(@RequestParam String id, Model model) {
-		Optional<Clothing> optional = clothingRepository.findById(id);
-		if (optional.isPresent()) {
-			Clothing clothing = optional.get();
-			model.addAttribute("clothing", clothing);
-		}
-		return "edit";
+	@GetMapping
+	public List<Clothing> readAll() {
+		return clothingRepository.findAll();
 	}
 
-	@RequestMapping("/update")
-	public String update(@RequestParam String id, @RequestParam String type,
-			@RequestParam String color, @RequestParam String brand, @RequestParam String info) {
-		Optional<Clothing> optional = clothingRepository.findById(id);
-		if (optional.isPresent()) {
-			Clothing clothing = optional.get();
-			clothing.setType(type);
-			clothing.setColor(color);
-			clothing.setBrand(brand);
-			clothing.setInfo(info);
-			clothingRepository.save(clothing);
-		}
-		return "redirect:/clothing";
+	@PutMapping("/{id}")
+	public Clothing update(@RequestBody Clothing clothing) {
+		return clothingRepository.save(clothing);
 	}
 
-	@RequestMapping("/delete")
-	public String delete(@RequestParam String id) {
+	@DeleteMapping("/{id}")
+	public Clothing delete(@PathVariable String id) throws ClothingNotFoundException {
 		Optional<Clothing> optional = clothingRepository.findById(id);
-		if (optional.isPresent()) {
-			Clothing clothing = optional.get();
-			clothingRepository.delete(clothing);
+		if (!optional.isPresent()) {
+			String message = String.format("No clothing with the requested id %s", id);
+			throw new ClothingNotFoundException(message);
 		}
-		return "redirect:/clothing";
+		Clothing clothing = optional.get();
+		clothingRepository.delete(clothing);
+		return clothing;
 	}
 }
