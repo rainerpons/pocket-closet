@@ -37,6 +37,11 @@ public class ClothingController {
 		}
 		return clothing.get();
 	}
+	
+	@GetMapping("/type/{type}")
+	public List<Clothing> readByType(@PathVariable String type) {
+		return clothingRepository.findByTypeEqualsIgnoreCase(type);
+	}
 
 	@GetMapping
 	public List<Clothing> readAll() {
