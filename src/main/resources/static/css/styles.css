@@ -23,7 +23,7 @@
 
 .clean-block.dark {
   background-color:#f6f6f6;
-  padding-bottom:80px;
+  padding-bottom:60px;
 }
 
 .clean-block .block-content, .clean-block .content {
@@ -57,6 +57,7 @@
 #create-star-btn {
   background-color:rgb(85,63,127);
   border-color:rgba(255,255,255,0);
+  margin-top:32px;
 }
 
 .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {

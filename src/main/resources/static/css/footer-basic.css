@@ -61,3 +61,22 @@
   margin-bottom:0;
 }
 
+.container {
+  padding-right:7.5%;
+  padding-left:7.5%;
+}
+
+.entry-example {
+  font-size:13px;
+  margin-bottom:8px;
+  color:rgb(170,170,170);
+  font-style:italic;
+}
+
+label {
+}
+
+.entry-label {
+  margin-bottom:0px;
+}
+

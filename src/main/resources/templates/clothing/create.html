@@ -28,17 +28,20 @@
         </div>
     </nav>
     <main class="page contact-us-page">
-        <section class="clean-block clean-form dark" style="padding-bottom:60px;">
-            <div class="container" style="padding-right:7.5%;padding-left:7.5%;">
+        <section class="clean-block clean-form dark">
+            <div class="container">
                 <div class="block-heading">
                     <h2>Create a Clothing Entry</h2>
-                    <p>Be descriptive! The more detail, the better.</p>
+                    <p>Be descriptive! The more detail you include, the better your suggestions.</p>
                 </div>
                 <form id="create-star-form">
-                    <div class="form-group"><label>Type</label><input class="form-control" type="text" id="type"></div>
-                    <div class="form-group"><label>Color</label><input class="form-control" type="text" id="color"></div>
-                    <div class="form-group"><label>Brand</label><input class="form-control" type="text" id="brand"></div>
-                    <div class="form-group"><label>Info</label><input class="form-control" type="text" id="info"></div><button class="btn btn-primary btn-block" type="submit" id="create-star-btn">Done</button></form>
+                    <div class="form-group"><label>Type</label><select class="form-control selectpicker" id="type"><option value="Top">Tops</option><option value="Bottom">Bottoms</option><option value="Footwear">Footwear</option><option value="Accessory">Accessories</option></select></div>
+                    <div
+                        class="form-group"><label class="entry-label">Info</label>
+                        <p class="entry-example">Example: short sleeve t-shirt</p><input class="form-control" type="text" id="info"></div>
+            <div class="form-group"><label class="entry-label">Color</label>
+                <p class="entry-example">Example: forest green</p><input class="form-control" type="text" id="color"></div>
+            <div class="form-group"><label>Brand</label><input class="form-control" type="text" id="brand"></div><button class="btn btn-primary btn-block" type="submit" id="create-star-btn">Done</button></form>
             </div>
         </section>
     </main>
