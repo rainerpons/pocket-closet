@@ -11,12 +11,17 @@ public class WebController {
 	}
 
 	@RequestMapping("/clothing/create")
-	public String create() {
+	public String createClothing() {
 		return "clothing/create";
 	}
 
 	@RequestMapping("/clothing/view")
-	public String view() {
+	public String viewClothing() {
 		return "clothing/view";
+	}
+	
+	@RequestMapping("/outfits/view")
+	public String viewOutfit() {
+		return "outfits/view";
 	}
 }
