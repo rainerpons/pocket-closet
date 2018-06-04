@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="../fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="../css/footer-basic.css">
+    <link rel="stylesheet" href="../css/Footer-Dark.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -21,10 +22,10 @@
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="/">Home</a></li>
                     <li class="dropdown"><a class="dropdown-toggle nav-link text-capitalize dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Clothing&nbsp;</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="create">Create</a><a class="dropdown-item" role="presentation">View</a></div>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="../clothing/create">Create</a><a class="dropdown-item" role="presentation" href="../clothing/view">View</a></div>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle nav-link text-capitalize dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Outfits&nbsp;</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="outfits/view">View</a></div>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation">View</a></div>
                     </li>
                 </ul>
             </div>
@@ -33,19 +34,20 @@
     <main class="page blog-post-list">
         <section class="clean-block clean-blog-list dark" style="padding-right:7.5%;padding-left:7.5%;padding-bottom:60px;">
             <div class="block-heading">
-                <h2>View Clothing Entries</h2>
-                <p>Sweet wardrobe! You can click on any of the categories below to sort.</p>
+                <h2>View Outfit Entries</h2>
+                <p>Sweet outfits! You can click on any of the entries below for details.</p>
             </div>
             <div class="container" style="padding-left:0px;padding-right:0px;">
                 <div class="table-responsive">
-                    <table class="table" id="get-clothing-table" style="width:100%;">
+                    <table id="get-outfits-table" class="table">
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Type</th>
-                                <th>Color</th>
-                                <th>Brand</th>
-                                <th>Info</th>
+                                <th>Description</th>
+                                <th>Tops</th>
+                                <th>Bottoms</th>
+                                <th>Footwear</th>
+                                <th>Accessories</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -68,7 +70,7 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/theme.js"></script>
-    <script src="../js/clothing-view.js"></script>
+    <script src="../js/outfits-view.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 </body>
