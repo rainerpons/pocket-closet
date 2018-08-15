@@ -1,4 +1,4 @@
-package com.pocketcloset.controllers;
+package com.pocketcloset.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ import com.pocketcloset.repositories.ClothingRepository;
 
 @RestController
 @RequestMapping("/api/clothing")
-public class ClothingController implements ClothingDao {
+public class ClothingDaoImpl implements ClothingDao {
 	@Autowired
 	ClothingRepository clothingRepository;
 

@@ -1,4 +1,4 @@
-package com.pocketcloset.controllers;
+package com.pocketcloset.dao.impl;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pocketcloset.dao.OutfitDao;
 import com.pocketcloset.exceptions.ClothingNotFoundException;
 import com.pocketcloset.exceptions.OutfitNotFoundException;
 import com.pocketcloset.models.Clothing;
@@ -24,12 +25,13 @@ import com.pocketcloset.repositories.OutfitRepository;
 
 @RestController
 @RequestMapping("/api/outfits")
-public class OutfitController {
+public class OutfitDaoImpl implements OutfitDao {
 	@Autowired
 	ClothingRepository clothingRepository;
 	@Autowired
 	OutfitRepository outfitRepository;
 
+	@Override
 	@PostMapping
 	public Outfit create(@RequestBody Outfit outfit) {
 		return outfitRepository.save(outfit);
@@ -54,6 +56,7 @@ public class OutfitController {
 		return outfitRepository.save(outfit);
 	}
 
+	@Override
 	@GetMapping("/{id}")
 	public Outfit read(@PathVariable String id) throws OutfitNotFoundException {
 		Optional<Outfit> outfit = outfitRepository.findById(id);
@@ -64,16 +67,19 @@ public class OutfitController {
 		return outfit.get();
 	}
 
+	@Override
 	@GetMapping
 	public List<Outfit> readAll() {
 		return outfitRepository.findAll();
 	}
 
+	@Override
 	@PutMapping("/{id}")
 	public Outfit update(@RequestBody Outfit outfit) {
 		return outfitRepository.save(outfit);
 	}
 
+	@Override
 	@DeleteMapping("/{id}")
 	public Outfit delete(@PathVariable String id) throws OutfitNotFoundException {
 		Optional<Outfit> optional = outfitRepository.findById(id);
