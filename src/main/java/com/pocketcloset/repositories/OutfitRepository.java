@@ -1,8 +1,8 @@
-package com.rainerpons.pocketcloset.repositories;
+package com.pocketcloset.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.rainerpons.pocketcloset.models.Outfit;
+import com.pocketcloset.models.Outfit;
 
 public interface OutfitRepository extends MongoRepository<Outfit, String> {
 

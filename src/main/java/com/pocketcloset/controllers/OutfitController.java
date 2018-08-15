@@ -1,4 +1,4 @@
-package com.rainerpons.pocketcloset.controllers;
+package com.pocketcloset.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rainerpons.pocketcloset.exceptions.OutfitNotFoundException;
-import com.rainerpons.pocketcloset.models.Outfit;
-import com.rainerpons.pocketcloset.repositories.OutfitRepository;
+import com.pocketcloset.exceptions.OutfitNotFoundException;
+import com.pocketcloset.models.Outfit;
+import com.pocketcloset.repositories.OutfitRepository;
 
 @RestController
 @RequestMapping("/api/outfits")

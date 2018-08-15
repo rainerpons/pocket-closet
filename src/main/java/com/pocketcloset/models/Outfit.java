@@ -1,4 +1,4 @@
-package com.rainerpons.pocketcloset.models;
+package com.pocketcloset.models;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class Outfit {
 	private List<Clothing> bottoms;
 	private List<Clothing> footwear;
 	private List<Clothing> accessories;
-	
+
 	public Outfit() {
 		// Do nothing because of setter-based dependency injection.
 	}
