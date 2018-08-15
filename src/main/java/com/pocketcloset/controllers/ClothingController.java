@@ -1,4 +1,4 @@
-package com.rainerpons.pocketcloset.controllers;
+package com.pocketcloset.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rainerpons.pocketcloset.exceptions.ClothingNotFoundException;
-import com.rainerpons.pocketcloset.models.Clothing;
-import com.rainerpons.pocketcloset.repositories.ClothingRepository;
+import com.pocketcloset.exceptions.ClothingNotFoundException;
+import com.pocketcloset.models.Clothing;
+import com.pocketcloset.repositories.ClothingRepository;
 
 @RestController
 @RequestMapping("/api/clothing")
@@ -40,7 +40,7 @@ public class ClothingController {
 	
 	@GetMapping("/type/{type}")
 	public List<Clothing> readByType(@PathVariable String type) {
-		return clothingRepository.findByTypeEqualsIgnoreCase(type);
+		return clothingRepository.findAllByTypeEqualsIgnoreCase(type);
 	}
 
 	@GetMapping
